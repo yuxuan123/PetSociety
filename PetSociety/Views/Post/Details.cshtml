@@ -1,0 +1,114 @@
+﻿@model PetSociety.Models.T_Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>T_Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desciption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desciption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeSlotStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeSlotStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeSlotEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeSlotEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.T_Pet.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.T_Pet.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.T_Photo.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.T_Photo.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.T_User.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.T_User.Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

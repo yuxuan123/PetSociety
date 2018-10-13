@@ -1,0 +1,644 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PetSocietyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_LK_Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="128" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="128" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_LK_PetType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PetType" Type="varchar" MaxLength="100" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="128" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="T_Market">
+          <Key>
+            <PropertyRef Name="MarketID" />
+          </Key>
+          <Property Name="MarketID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Price" Type="float" />
+          <Property Name="IsNegotiable" Type="bit" />
+          <Property Name="PhotoID" Type="int" />
+          <Property Name="UserID" Type="uniqueidentifier" />
+          <Property Name="PetID" Type="uniqueidentifier" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="128" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="T_Pet">
+          <Key>
+            <PropertyRef Name="PetID" />
+          </Key>
+          <Property Name="PetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="TypeOthers" Type="varchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="BloodType" Type="varchar" MaxLength="10" />
+          <Property Name="Breed" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Characteristic" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="128" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="T_Photo">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Name="PhotoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" />
+          <Property Name="Size" Type="int" />
+          <Property Name="FileExt" Type="varchar" MaxLength="50" />
+          <Property Name="Path" Type="varchar" MaxLength="128" />
+          <Property Name="IsProfilePic" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="128" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="T_Post">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Desciption" Type="nvarchar(max)" />
+          <Property Name="TimeSlotStart" Type="float" />
+          <Property Name="TimeSlotEnd" Type="float" />
+          <Property Name="PhotoID" Type="int" />
+          <Property Name="UserID" Type="uniqueidentifier" />
+          <Property Name="PetID" Type="uniqueidentifier" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="128" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="T_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" />
+          <Property Name="Email" Type="varchar" MaxLength="128" />
+          <Property Name="PhoneNo" Type="int" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="128" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="128" />
+          <Property Name="PostalCode" Type="int" />
+          <Property Name="PetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="128" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK_T_Market_T_Pet">
+          <End Role="T_Pet" Type="Self.T_Pet" Multiplicity="0..1" />
+          <End Role="T_Market" Type="Self.T_Market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Pet">
+              <PropertyRef Name="PetID" />
+            </Principal>
+            <Dependent Role="T_Market">
+              <PropertyRef Name="PetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Market_T_Photo">
+          <End Role="T_Photo" Type="Self.T_Photo" Multiplicity="0..1" />
+          <End Role="T_Market" Type="Self.T_Market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Photo">
+              <PropertyRef Name="PhotoID" />
+            </Principal>
+            <Dependent Role="T_Market">
+              <PropertyRef Name="PhotoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Market_T_User">
+          <End Role="T_User" Type="Self.T_User" Multiplicity="0..1" />
+          <End Role="T_Market" Type="Self.T_Market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="T_Market">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Post_T_Pet">
+          <End Role="T_Pet" Type="Self.T_Pet" Multiplicity="0..1" />
+          <End Role="T_Post" Type="Self.T_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Pet">
+              <PropertyRef Name="PetID" />
+            </Principal>
+            <Dependent Role="T_Post">
+              <PropertyRef Name="PetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Post_T_Photo">
+          <End Role="T_Photo" Type="Self.T_Photo" Multiplicity="0..1" />
+          <End Role="T_Post" Type="Self.T_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Photo">
+              <PropertyRef Name="PhotoID" />
+            </Principal>
+            <Dependent Role="T_Post">
+              <PropertyRef Name="PhotoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Post_T_User">
+          <End Role="T_User" Type="Self.T_User" Multiplicity="0..1" />
+          <End Role="T_Post" Type="Self.T_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="T_Post">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_User_T_Pet">
+          <End Role="T_Pet" Type="Self.T_Pet" Multiplicity="1" />
+          <End Role="T_User" Type="Self.T_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Pet">
+              <PropertyRef Name="PetID" />
+            </Principal>
+            <Dependent Role="T_User">
+              <PropertyRef Name="PetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PetSocietyModelStoreContainer">
+          <EntitySet Name="T_LK_Gender" EntityType="Self.T_LK_Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_LK_PetType" EntityType="Self.T_LK_PetType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Market" EntityType="Self.T_Market" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Pet" EntityType="Self.T_Pet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Photo" EntityType="Self.T_Photo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Post" EntityType="Self.T_Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_User" EntityType="Self.T_User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_T_Market_T_Pet" Association="Self.FK_T_Market_T_Pet">
+            <End Role="T_Pet" EntitySet="T_Pet" />
+            <End Role="T_Market" EntitySet="T_Market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Market_T_Photo" Association="Self.FK_T_Market_T_Photo">
+            <End Role="T_Photo" EntitySet="T_Photo" />
+            <End Role="T_Market" EntitySet="T_Market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Market_T_User" Association="Self.FK_T_Market_T_User">
+            <End Role="T_User" EntitySet="T_User" />
+            <End Role="T_Market" EntitySet="T_Market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Post_T_Pet" Association="Self.FK_T_Post_T_Pet">
+            <End Role="T_Pet" EntitySet="T_Pet" />
+            <End Role="T_Post" EntitySet="T_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Post_T_Photo" Association="Self.FK_T_Post_T_Photo">
+            <End Role="T_Photo" EntitySet="T_Photo" />
+            <End Role="T_Post" EntitySet="T_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Post_T_User" Association="Self.FK_T_Post_T_User">
+            <End Role="T_User" EntitySet="T_User" />
+            <End Role="T_Post" EntitySet="T_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_User_T_Pet" Association="Self.FK_T_User_T_Pet">
+            <End Role="T_Pet" EntitySet="T_Pet" />
+            <End Role="T_User" EntitySet="T_User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PetSocietyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="T_LK_Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_LK_PetType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PetType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_Market">
+          <Key>
+            <PropertyRef Name="MarketID" />
+          </Key>
+          <Property Name="MarketID" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="IsNegotiable" Type="Boolean" />
+          <Property Name="PhotoID" Type="Int32" />
+          <Property Name="UserID" Type="Guid" />
+          <Property Name="PetID" Type="Guid" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_Pet" Relationship="Self.FK_T_Market_T_Pet" FromRole="T_Market" ToRole="T_Pet" />
+          <NavigationProperty Name="T_Photo" Relationship="Self.FK_T_Market_T_Photo" FromRole="T_Market" ToRole="T_Photo" />
+          <NavigationProperty Name="T_User" Relationship="Self.FK_T_Market_T_User" FromRole="T_Market" ToRole="T_User" />
+        </EntityType>
+        <EntityType Name="T_Pet">
+          <Key>
+            <PropertyRef Name="PetID" />
+          </Key>
+          <Property Name="PetID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeOthers" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="BloodType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Breed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Characteristic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_Market" Relationship="Self.FK_T_Market_T_Pet" FromRole="T_Pet" ToRole="T_Market" />
+          <NavigationProperty Name="T_Post" Relationship="Self.FK_T_Post_T_Pet" FromRole="T_Pet" ToRole="T_Post" />
+          <NavigationProperty Name="T_User" Relationship="Self.FK_T_User_T_Pet" FromRole="T_Pet" ToRole="T_User" />
+        </EntityType>
+        <EntityType Name="T_Photo">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Name="PhotoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Size" Type="Int32" />
+          <Property Name="FileExt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Path" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="IsProfilePic" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_Market" Relationship="Self.FK_T_Market_T_Photo" FromRole="T_Photo" ToRole="T_Market" />
+          <NavigationProperty Name="T_Post" Relationship="Self.FK_T_Post_T_Photo" FromRole="T_Photo" ToRole="T_Post" />
+        </EntityType>
+        <EntityType Name="T_Post">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Desciption" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimeSlotStart" Type="Double" />
+          <Property Name="TimeSlotEnd" Type="Double" />
+          <Property Name="PhotoID" Type="Int32" />
+          <Property Name="UserID" Type="Guid" />
+          <Property Name="PetID" Type="Guid" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_Pet" Relationship="Self.FK_T_Post_T_Pet" FromRole="T_Post" ToRole="T_Pet" />
+          <NavigationProperty Name="T_Photo" Relationship="Self.FK_T_Post_T_Photo" FromRole="T_Post" ToRole="T_Photo" />
+          <NavigationProperty Name="T_User" Relationship="Self.FK_T_Post_T_User" FromRole="T_Post" ToRole="T_User" />
+        </EntityType>
+        <EntityType Name="T_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNo" Type="Int32" />
+          <Property Name="Address1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="Int32" />
+          <Property Name="PetID" Type="Guid" Nullable="false" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_Market" Relationship="Self.FK_T_Market_T_User" FromRole="T_User" ToRole="T_Market" />
+          <NavigationProperty Name="T_Pet" Relationship="Self.FK_T_User_T_Pet" FromRole="T_User" ToRole="T_Pet" />
+          <NavigationProperty Name="T_Post" Relationship="Self.FK_T_Post_T_User" FromRole="T_User" ToRole="T_Post" />
+        </EntityType>
+        <Association Name="FK_T_Market_T_Pet">
+          <End Role="T_Pet" Type="Self.T_Pet" Multiplicity="0..1" />
+          <End Role="T_Market" Type="Self.T_Market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Pet">
+              <PropertyRef Name="PetID" />
+            </Principal>
+            <Dependent Role="T_Market">
+              <PropertyRef Name="PetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Market_T_Photo">
+          <End Role="T_Photo" Type="Self.T_Photo" Multiplicity="0..1" />
+          <End Role="T_Market" Type="Self.T_Market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Photo">
+              <PropertyRef Name="PhotoID" />
+            </Principal>
+            <Dependent Role="T_Market">
+              <PropertyRef Name="PhotoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Market_T_User">
+          <End Role="T_User" Type="Self.T_User" Multiplicity="0..1" />
+          <End Role="T_Market" Type="Self.T_Market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="T_Market">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Post_T_Pet">
+          <End Role="T_Pet" Type="Self.T_Pet" Multiplicity="0..1" />
+          <End Role="T_Post" Type="Self.T_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Pet">
+              <PropertyRef Name="PetID" />
+            </Principal>
+            <Dependent Role="T_Post">
+              <PropertyRef Name="PetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_User_T_Pet">
+          <End Role="T_Pet" Type="Self.T_Pet" Multiplicity="1" />
+          <End Role="T_User" Type="Self.T_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Pet">
+              <PropertyRef Name="PetID" />
+            </Principal>
+            <Dependent Role="T_User">
+              <PropertyRef Name="PetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Post_T_Photo">
+          <End Role="T_Photo" Type="Self.T_Photo" Multiplicity="0..1" />
+          <End Role="T_Post" Type="Self.T_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Photo">
+              <PropertyRef Name="PhotoID" />
+            </Principal>
+            <Dependent Role="T_Post">
+              <PropertyRef Name="PhotoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Post_T_User">
+          <End Role="T_User" Type="Self.T_User" Multiplicity="0..1" />
+          <End Role="T_Post" Type="Self.T_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="T_Post">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hack_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_LK_Gender" EntityType="Self.T_LK_Gender" />
+          <EntitySet Name="T_LK_PetType" EntityType="Self.T_LK_PetType" />
+          <EntitySet Name="T_Market" EntityType="Self.T_Market" />
+          <EntitySet Name="T_Pet" EntityType="Self.T_Pet" />
+          <EntitySet Name="T_Photo" EntityType="Self.T_Photo" />
+          <EntitySet Name="T_Post" EntityType="Self.T_Post" />
+          <EntitySet Name="T_User" EntityType="Self.T_User" />
+          <AssociationSet Name="FK_T_Market_T_Pet" Association="Self.FK_T_Market_T_Pet">
+            <End Role="T_Pet" EntitySet="T_Pet" />
+            <End Role="T_Market" EntitySet="T_Market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Market_T_Photo" Association="Self.FK_T_Market_T_Photo">
+            <End Role="T_Photo" EntitySet="T_Photo" />
+            <End Role="T_Market" EntitySet="T_Market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Market_T_User" Association="Self.FK_T_Market_T_User">
+            <End Role="T_User" EntitySet="T_User" />
+            <End Role="T_Market" EntitySet="T_Market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Post_T_Pet" Association="Self.FK_T_Post_T_Pet">
+            <End Role="T_Pet" EntitySet="T_Pet" />
+            <End Role="T_Post" EntitySet="T_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_User_T_Pet" Association="Self.FK_T_User_T_Pet">
+            <End Role="T_Pet" EntitySet="T_Pet" />
+            <End Role="T_User" EntitySet="T_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Post_T_Photo" Association="Self.FK_T_Post_T_Photo">
+            <End Role="T_Photo" EntitySet="T_Photo" />
+            <End Role="T_Post" EntitySet="T_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Post_T_User" Association="Self.FK_T_Post_T_User">
+            <End Role="T_User" EntitySet="T_User" />
+            <End Role="T_Post" EntitySet="T_Post" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PetSocietyModelStoreContainer" CdmEntityContainer="hack_dbEntities">
+          <EntitySetMapping Name="T_LK_Gender">
+            <EntityTypeMapping TypeName="PetSocietyModel.T_LK_Gender">
+              <MappingFragment StoreEntitySet="T_LK_Gender">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_LK_PetType">
+            <EntityTypeMapping TypeName="PetSocietyModel.T_LK_PetType">
+              <MappingFragment StoreEntitySet="T_LK_PetType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PetType" ColumnName="PetType" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Market">
+            <EntityTypeMapping TypeName="PetSocietyModel.T_Market">
+              <MappingFragment StoreEntitySet="T_Market">
+                <ScalarProperty Name="MarketID" ColumnName="MarketID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsNegotiable" ColumnName="IsNegotiable" />
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PetID" ColumnName="PetID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Pet">
+            <EntityTypeMapping TypeName="PetSocietyModel.T_Pet">
+              <MappingFragment StoreEntitySet="T_Pet">
+                <ScalarProperty Name="PetID" ColumnName="PetID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TypeOthers" ColumnName="TypeOthers" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="BloodType" ColumnName="BloodType" />
+                <ScalarProperty Name="Breed" ColumnName="Breed" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Characteristic" ColumnName="Characteristic" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Photo">
+            <EntityTypeMapping TypeName="PetSocietyModel.T_Photo">
+              <MappingFragment StoreEntitySet="T_Photo">
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="FileExt" ColumnName="FileExt" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="IsProfilePic" ColumnName="IsProfilePic" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Post">
+            <EntityTypeMapping TypeName="PetSocietyModel.T_Post">
+              <MappingFragment StoreEntitySet="T_Post">
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Desciption" ColumnName="Desciption" />
+                <ScalarProperty Name="TimeSlotStart" ColumnName="TimeSlotStart" />
+                <ScalarProperty Name="TimeSlotEnd" ColumnName="TimeSlotEnd" />
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PetID" ColumnName="PetID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_User">
+            <EntityTypeMapping TypeName="PetSocietyModel.T_User">
+              <MappingFragment StoreEntitySet="T_User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="PetID" ColumnName="PetID" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

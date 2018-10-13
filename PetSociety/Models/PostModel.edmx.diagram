@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b39a4c953c0041128dcd9b5c94fb15b5" Name="Diagram1">
+        <EntityTypeShape EntityType="PetSocietyModel.T_LK_Gender" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetSocietyModel.T_LK_PetType" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetSocietyModel.T_Market" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetSocietyModel.T_Pet" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetSocietyModel.T_Photo" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetSocietyModel.T_Post" Width="1.5" PointX="8.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetSocietyModel.T_User" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <AssociationConnector Association="PetSocietyModel.FK_T_Market_T_Pet" ManuallyRouted="false" />
+        <AssociationConnector Association="PetSocietyModel.FK_T_Market_T_Photo" ManuallyRouted="false" />
+        <AssociationConnector Association="PetSocietyModel.FK_T_Market_T_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PetSocietyModel.FK_T_Post_T_Pet" ManuallyRouted="false" />
+        <AssociationConnector Association="PetSocietyModel.FK_T_User_T_Pet" ManuallyRouted="false" />
+        <AssociationConnector Association="PetSocietyModel.FK_T_Post_T_Photo" ManuallyRouted="false" />
+        <AssociationConnector Association="PetSocietyModel.FK_T_Post_T_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

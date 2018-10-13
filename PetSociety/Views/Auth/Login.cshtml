@@ -1,0 +1,108 @@
+﻿<style>
+
+html {
+    background:  url(http://www.petsworld.in/blog/wp-content/uploads/2015/03/pets.jpg) no-repeat center fixed;
+    background-size: contain;
+    background-position: bottom
+}
+
+
+body {
+    display: inline
+}
+
+#username, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#password, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#login {
+    width: 40%;
+    text-align:center;
+    background-color: #FBFBFC;
+    color: black;
+    padding: 14px 20px;
+    margin: 0 0;
+    border: none;
+    border-radius: 200px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px grey;
+}
+
+#register {
+    width: 40%;
+    text-align:center;
+    background-color: #FBFBFC;
+    color: black;
+    padding: 14px 20px;
+    margin: 0 6%;
+    border: none;
+    border-radius: 200px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.login-box {
+    border-radius: 25px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 21% 20%;
+}
+
+@@media only screen and (min-width : 810px) {
+.login-box {
+    border-radius: 25px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 12% 35%;
+
+}
+}
+
+</style>
+
+@model PetSociety.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Log In</h2>
+
+@Html.ValidationSummary(true)
+
+@*@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+}*@
+<div class="login-box">
+
+    @*<label for="username">Username</label>*@
+    @*<input type="text" id="username" name="username" placeholder="Username">*@
+
+    @*<label for="password">Password</label>*@
+    @*<input type="password" id="password" name="password" placeholder="Password">*@
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.EditorForModel(new { htmlAttributes = new { id = "username" } })
+        <button type="submit" id="register">Register</button>
+        <button type="submit" id="login">Login</button>
+    }
+
+</div>
